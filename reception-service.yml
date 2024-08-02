@@ -45,7 +45,7 @@ management:
             exposure:
                 include: prometheus
 
-distributor.service.base-url: http://distributor-service:9002/api/v1/distributors
+distributor.service.base-url: http://localhost:9002/api/v1/distributors
 
 logging:
     pattern:
