@@ -5,9 +5,9 @@ spring:
     application:
         name: distributor-service
     datasource:
-        url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
+        url: jdbc:postgresql://10.1.8.11:5432/postgres-inwi
         username: postgres
-        password: password
+        password: yahya2024
     jpa:
         hibernate:
             ddl-auto: update
