@@ -7,7 +7,7 @@ spring:
     datasource:
         url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
         username: postgres
-        password: yahya2024
+        password: admin
     jpa:
         hibernate:
             ddl-auto: update
