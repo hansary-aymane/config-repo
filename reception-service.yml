@@ -47,6 +47,10 @@ management:
 
 distributor.service.base-url: http://distributor-service:9002/api/v1/distributors
 
+lot:
+  contracts:
+    limit: 100
+
 logging:
     pattern:
         level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
