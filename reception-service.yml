@@ -2,8 +2,17 @@ server:
     port: 9004
 
 spring:
-    application:
-        name: reception-service
+  application:
+    name: reception-service
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    topics:
+      raw: "scanTopic"
+      
     datasource:
         url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
         username: postgres
