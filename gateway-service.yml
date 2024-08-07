@@ -55,11 +55,33 @@ spring:
                   uri: lb://PRODUCER-ASSOCIATION-SERVICE
                   predicates:
                     - Path=/api/v1/producer/send
+
+                - id: distributor-swagger
+                  uri: lb://DISTRIBUTOR-SERVICE
+                  predicates:
+                    - Path=/distributor-service/**
+                  filters:
+                    - RewritePath=/distributor-service(?<segment>/?.*), $\{segment}
+
+                - id: reception-swagger
+                  uri: lb://RECEPTION-SERVICE
+                  predicates:
+                    - Path=/reception-service/**
+                  filters:
+                    - RewritePath=/reception-service(?<segment>/?.*), $\{segment}
+            
+    main:
+        banner-mode: 'off'
+
     security:
         oauth2:
             resourceserver:
                 jwt:
                     issuer-uri: http://keycloak:8080/realms/inwi-management
+
+springdoc:
+    swagger-ui:
+        path: /
 
 server:
     port: 8181
