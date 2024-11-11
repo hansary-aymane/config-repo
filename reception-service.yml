@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: reception-service
+  data:
+    mongodb:
+      uri: mongodb://admin:root@localhost:27017/inwi?authSource=admin
 
   kafka:
     producer:
@@ -11,7 +14,7 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     topics:
-      raw: "scanTopic"
+      raw: "SCAN"
       
   datasource:
     url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
