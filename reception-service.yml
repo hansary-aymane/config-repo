@@ -63,7 +63,8 @@ distributor:
 
 lot:
   contracts:
-    limit: 100
+    limit: 400
+    #limit: 100
 
 logging:
   pattern:
