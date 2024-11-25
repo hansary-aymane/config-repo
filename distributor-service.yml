@@ -5,7 +5,8 @@ spring:
     application:
         name: distributor-service
     datasource:
-        url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
+        #url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
+        url: jdbc:postgresql://localhost:5432/postgres-inwi
         username: postgres
         password: password
     jpa:
