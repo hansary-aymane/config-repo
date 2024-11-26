@@ -6,7 +6,7 @@ spring:
     name: reception-service
   data:
     mongodb:
-      uri: mongodb://admin:root@localhost:27017/inwi?authSource=admin
+      uri: mongodb://admin:root@host.docker.internal:27017/inwi?authSource=admin
 
   kafka:
     producer:
