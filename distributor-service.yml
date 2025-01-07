@@ -7,8 +7,7 @@ spring:
     datasource:
         #url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
         #url: jdbc:postgresql://db:5432/postgres-inwi
-        #url: jdbc:postgresql://host.docker.internal:5432/inwi
-        url: jdbc:postgresql://postgres_container:5432/inwi
+        url: jdbc:postgresql://host.docker.internal:5432/inwi
         username: postgres
         password: password
     jpa:
