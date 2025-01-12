@@ -82,9 +82,8 @@ distributor:
 
 lot:
   contracts:
-    limit: 400
-    #limit: 100
-
+    limit: 100
+    
 logging:
   pattern:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
