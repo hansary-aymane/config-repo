@@ -4,22 +4,11 @@ server:
 spring:
   application:
     name: scan-service
-  data:
-    mongodb:
-      uri: mongodb://admin:root@host.docker.internal:27017/inwi?authSource=admin
-
-  kafka:
-    producer:
-      bootstrap-servers: kafka:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    topics:
-      raw: "SCAN"
       
   datasource:
     #url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
     #url: jdbc:postgresql://db:5432/postgres-inwi
-    url: jdbc:postgresql://host.docker.internal:5432/logistic
+    url: jdbc:postgresql://172.24.114.22:5432/logistic
     username: postgres
     password: password
   jpa:
