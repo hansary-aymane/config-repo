@@ -1,1 +1,89 @@
+server:
+  port: 9008
 
+spring:
+  application:
+    name: scan-service
+  data:
+    mongodb:
+      uri: mongodb://admin:root@host.docker.internal:27017/inwi?authSource=admin
+
+  kafka:
+    producer:
+      bootstrap-servers: kafka:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    topics:
+      raw: "SCAN"
+      
+  datasource:
+    #url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
+    #url: jdbc:postgresql://db:5432/postgres-inwi
+    url: jdbc:postgresql://host.docker.internal:5432/logistic
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/hcd-management
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: eureka-0
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: 
+          - prometheus
+          - health
+  health:
+    circuitbreakers:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      receptionService:
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000ms
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+distributor:
+  service:
+    base-url: http://distributor-service:9002/api/v1/distributors
+
+lot:
+  contracts:
+    limit: 100
+    
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
