@@ -36,10 +36,10 @@ spring:
                   predicates:
                       - Path=/api/v1/receptions/**
 
-                - id: lot-service
-                  uri: lb://LOT-SERVICE
+                - id: batch-service
+                  uri: lb://BATCH-SERVICE
                   predicates:
-                      - Path=/api/v1/lot/**
+                      - Path=/api/v1/batch/**
 
                 - id: scan-service
                   uri: lb://SCAN-SERVICE
