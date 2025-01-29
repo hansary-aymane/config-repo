@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: lot-service
+    name: batch-service
       
   datasource:
     #url: jdbc:postgresql://172.24.114.25:31177/postgres-inwi
